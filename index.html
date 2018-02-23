@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- todo: figure out what these things mean -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>UX Example</title>
+
+
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+
+
+    <!-- link rel="stylesheet" href="css/jquery-ui.css" -->
+    <!-- todo: get the cdn version of this -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <style>
+
+      /* general styles */
+
+      .bordered{
+        border: 3px black dashed;
+      }
+
+      .active{
+        cursor: pointer;
+      }
+
+      /* general styles */
+
+
+
+      #div-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #app-container{
+        width: 242px;
+        height: 353px;
+        /* cursor: pointer; */
+        position: relative;
+      }
+
+      #div-hotspot-1{
+        position: absolute;
+        top: 190px;
+        left: 39px;
+        width: 68px;
+        height: 78px;
+        z-index: 90;
+      }
+
+      #div-hotspot-2{
+        position: absolute;
+        top: 260px;
+        left: 47px;
+        width: 127px;
+        height: 43px;
+        z-index: 80;
+      }
+
+      #div-hotspot-3{
+        position: absolute;
+        top: 170px;
+        left: 32px;
+        width: 176px;
+        height: 51px;
+        z-index: 70;
+      }
+
+      #div-hotspot-4{
+        position: absolute;
+        top: 308px;
+        left: 16px;
+        width: 206px;
+        height: 42px;
+        z-index: 60;
+      }
+
+      #div-hotspot-5{
+        position: absolute;
+        top: 40px;
+        left: 140px;
+        width: 40px;
+        height: 42px;
+        z-index: 60;
+      }
+
+
+    </style>
+    
+    <div id="div-container">
+      
+        <div id="app-container" class="bordered">
+          <img id="img-main" src="./imgs/ux/ux.page1.png" />
+          <div id="div-hotspot-wrapper">
+            <div id="div-hotspot-1" class="!bordered hotspot active"></div>
+            <div id="div-hotspot-2" class="!bordered hotspot"></div>
+            <div id="div-hotspot-3" class="!bordered hotspot"></div>
+            <div id="div-hotspot-4" class="!bordered hotspot"></div>
+            <div id="div-hotspot-5" class="!bordered hotspot"></div>
+          </div>
+        </div>
+    
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <!-- script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></scrip ---t>
+
+    <script src="./js/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <!-- <script src="./js/moment.js"></script> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script> -->
+    
+
+    <!-- script src="./js/jquery-ui.js"></script -->
+    <!-- script
+      src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+      integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+      crossorigin="anonymous"></script -->
+    
+    <script src="./js/bootstrap.js"></script>
+    <!-- script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script -->
+
+
+    <script>
+
+      $(function(){
+
+        var objThis = this;
+        var objAudio;
+
+        function initHandlers(){
+          $("#div-hotspot-1.active").click(function(){
+            $("#img-main").attr("src", "./imgs/ux/ux.page2.png");
+
+            $('.hotspot').removeClass("active");
+            $("#div-hotspot-2").addClass('active');
+
+            initHandlers.call(this);
+
+            console.log("div-hotspot-1");
+          });
+
+          $("#div-hotspot-2.active").click(function(){
+            $("#img-main").attr("src", "./imgs/ux/ux.page3.png");
+            
+            $('.hotspot').removeClass("active");
+            $("#div-hotspot-3").addClass('active');
+            $("#div-hotspot-5").addClass('active');
+          
+
+            initHandlers.call(this);
+          });
+
+          $("#div-hotspot-3.active").click(function(){
+            $("#img-main").attr("src", "./imgs/ux/ux.page4.png");
+            
+            $('.hotspot').removeClass("active");
+            $("#div-hotspot-4").addClass('active');
+            $("#div-hotspot-5").addClass('active');
+
+            initHandlers.call(this);
+          });
+
+          $("#div-hotspot-5.active").click(function(){
+            
+            objAudio.play();
+
+            console.log("audio")
+          });
+
+          
+
+          $("#div-hotspot-4.active").click(function(){
+            $("#img-main").attr("src", "./imgs/ux/ux.page5.png");
+            
+            $(".hotspot").remove();
+          });
+
+
+        }
+
+        function init(){
+
+          objAudio = new Audio('./snds/processed.qi.m4a');
+
+          initHandlers.call(objThis);
+        }
+
+        init();
+      });
+    
+    </script>
+  </body>
+</html>

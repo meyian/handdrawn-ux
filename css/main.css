@@ -1,0 +1,9 @@
+/* general styles */
+
+.bordered{
+  border: 2px solid black;
+}
+
+.dont-show{
+  opacity: 0;
+}
