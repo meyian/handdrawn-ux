@@ -43,7 +43,10 @@
 
       /* general styles */
 
-
+      #img-main{
+        width: 100%;
+        height: auto;
+      }
 
       #div-container{
         display: flex;
@@ -54,36 +57,38 @@
         height: 100vh;
       }
 
+
       #app-container{
         width: 242px;
         height: 353px;
         /* cursor: pointer; */
         position: relative;
+        overflow: hidden;
       }
 
       #div-hotspot-1{
         position: absolute;
-        top: 190px;
-        left: 39px;
-        width: 68px;
-        height: 78px;
+        top: 104px;
+        left: 10px;
+        width: 48px;
+        height: 48px;
         z-index: 90;
       }
 
       #div-hotspot-2{
         position: absolute;
-        top: 260px;
-        left: 47px;
-        width: 127px;
+        top: 105px;
+        left: 187px;
+        width: 43px;
         height: 43px;
         z-index: 80;
       }
 
       #div-hotspot-3{
         position: absolute;
-        top: 170px;
-        left: 32px;
-        width: 176px;
+        top: 220px;
+        left: 149px;
+        width: 50px;
         height: 51px;
         z-index: 70;
       }
@@ -114,11 +119,17 @@
         <div id="app-container" class="bordered">
           <img id="img-main" src="./imgs/ux/ux.page1.png" />
           <div id="div-hotspot-wrapper">
-            <div id="div-hotspot-1" class="!bordered hotspot active"></div>
-            <div id="div-hotspot-2" class="!bordered hotspot"></div>
-            <div id="div-hotspot-3" class="!bordered hotspot"></div>
-            <div id="div-hotspot-4" class="!bordered hotspot"></div>
-            <div id="div-hotspot-5" class="!bordered hotspot"></div>
+            <div id="div-hotspot-1" class="bordered hotspot active"></div>
+            <div id="div-hotspot-2" class="bordered hotspot"></div>
+            <div id="div-hotspot-3" class="bordered hotspot active"></div>
+            
+            <!--
+            <div id="div-hotspot-4" class="bordered hotspot"></div>
+            <div id="div-hotspot-5" class="bordered hotspot"></div>
+            <div id="div-hotspot-6" class="bordered hotspot"></div>
+            <div id="div-hotspot-7" class="bordered hotspot"></div>
+
+            -->
           </div>
         </div>
     
@@ -152,9 +163,13 @@
       $(function(){
 
         var objThis = this;
-        var objAudio;
+        var objAudio1;
+        var objAudio2;
+        var objAudio3;
 
         function initHandlers(){
+
+          
           $("#div-hotspot-1.active").click(function(){
             $("#img-main").attr("src", "./imgs/ux/ux.page2.png");
 
@@ -166,30 +181,31 @@
             console.log("div-hotspot-1");
           });
 
+
+
           $("#div-hotspot-2.active").click(function(){
             $("#img-main").attr("src", "./imgs/ux/ux.page3.png");
             
             $('.hotspot').removeClass("active");
-            $("#div-hotspot-3").addClass('active');
-            $("#div-hotspot-5").addClass('active');
+
+
+            // $("#div-hotspot-4").addClass('active');
+            // $("#div-hotspot-5").addClass('active');
           
 
             initHandlers.call(this);
           });
 
           $("#div-hotspot-3.active").click(function(){
-            $("#img-main").attr("src", "./imgs/ux/ux.page4.png");
             
-            $('.hotspot').removeClass("active");
-            $("#div-hotspot-4").addClass('active');
-            $("#div-hotspot-5").addClass('active');
+            objAudio1.play();
 
             initHandlers.call(this);
           });
 
           $("#div-hotspot-5.active").click(function(){
             
-            objAudio.play();
+            
 
             console.log("audio")
           });
@@ -207,7 +223,7 @@
 
         function init(){
 
-          objAudio = new Audio('./snds/processed.qi.m4a');
+          objAudio1 = new Audio('./snds/Ben.m4a');
 
           initHandlers.call(objThis);
         }
